@@ -10,7 +10,8 @@ public:
 
         int i = 0;
         int j = 0;
-        while (i < m)
+        //加上j<n,避免第二个数组为空导致访问第二个数组崩溃
+        while (i < m&&j<n)
         {
            
             if (nums1[i] >= nums2[j])
@@ -25,7 +26,7 @@ public:
                 nums1[i] = nums2[j];
         
                 j++;
-                m++;//有效数字加一
+                m++;//每次数组内容增加后，数组长度m要加加，有效数字加一
             }
             i++;
         }
@@ -51,9 +52,9 @@ void runTestCase(const string& name, vector<int> nums1, int m,
 }
 
 int main() {
-    runTestCase("Example 1", { 1, 2, 3, 0, 0, 0 }, 3, { 2, 5, 6 }, 3, { 1, 2, 2, 3, 5, 6 });
-    /*runTestCase("Example 2", { 1 }, 1, {}, 0, { 1 });
-    runTestCase("Example 3", { 0 }, 0, { 1 }, 1, { 1 });
+    //runTestCase("Example 1", { 1, 2, 3, 0, 0, 0 }, 3, { 2, 5, 6 }, 3, { 1, 2, 2, 3, 5, 6 });
+    runTestCase("Example 2", { 1 }, 1, {}, 0, { 1 });
+    /*runTestCase("Example 3", { 0 }, 0, { 1 }, 1, { 1 });
     runTestCase("All nums1 < nums2", { 1, 2, 3, 0, 0, 0 }, 3, { 4, 5, 6 }, 3, { 1, 2, 3, 4, 5, 6 });
     runTestCase("All nums1 > nums2", { 4, 5, 6, 0, 0, 0 }, 3, { 1, 2, 3 }, 3, { 1, 2, 3, 4, 5, 6 });
     runTestCase("Duplicates", { 2, 2, 3, 0, 0, 0 }, 3, { 1, 2, 4 }, 3, { 1, 2, 2, 2, 3, 4 });
